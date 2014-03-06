@@ -1,2 +1,23 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <div class="span6">
+    <h1>自動タグ</h1>
+    <br>
+
+    <%= form_tag(parse_documents_url, remote: true, "nlp-action" => "word_segment" ) do %>
+      <div class="form">
+        <%= text_area_tag "content", "", class: "input-xxlarge", placeholder: "質問を入力すると名詞が抽出されて、タグに推薦する" %>
+      </div>
+      <div class="form">
+        <%= select_tag "feature", options_for_select({"名詞" => "名詞", "動詞" => "動詞"}) %>
+      </div>
+      <%= submit_tag("単語分割", class: "btn btn-primary") %>
+    </div>
+    <div class="span6">
+      <h1>結果</h1>
+      <br>
+      <div class="input-group input-xxlarge">
+        <%= text_area_tag "tagging", "", class: "tagging" %>
+      </div>
+    </div>
+  <% end %>
+</div>

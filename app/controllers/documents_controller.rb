@@ -71,4 +71,21 @@ class DocumentsController < ApplicationController
     def document_params
       params.require(:document).permit(:title, :content)
     end
+
+  public
+    def parse
+      nm = Natto::MeCab.new
+      res = Hash.new
+      count = 0
+      nm.parse(params[:content]) do |n|
+        res[count] = n.surface if n.feature.match(params[:feature]).present?
+        # res[count] = {
+        #   "word"    => n.surface,
+        #   "feature" => n.feature,
+        #   "ok?"     => n.feature.match(params[:feature]).present?
+        # }
+        count += 1
+      end
+      return render( json: res, status: 200 )
+    end
 end

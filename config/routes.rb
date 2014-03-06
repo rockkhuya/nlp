@@ -1,7 +1,10 @@
 Nlp::Application.routes.draw do
-  
-  
-  resources :documents
+
+  resources :documents do
+    collection do
+      post :parse
+    end
+  end
 
   authenticated :user do
     root to: 'home#index', as: :authenticated_root

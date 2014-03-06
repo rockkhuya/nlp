@@ -9,7 +9,6 @@ gem "therubyracer", platforms: :ruby
 gem "jquery-rails"
 gem "turbolinks"
 gem "jbuilder", "~> 1.2"
-gem "natto"
 
 group :development do
   gem "guard-rspec"
@@ -41,3 +40,6 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem "hashugar", github: "alex-klepa/hashugar"
+
+gem "natto"
+gem "bootstrap_tokenfield_rails"
